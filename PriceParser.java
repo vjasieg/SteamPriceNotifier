@@ -12,9 +12,9 @@ public class PriceParser {
     public static final String API_STRING = Config.getItemURL();
     static URL url;
     static String json;
-    public static double casePrice;
+    public static double itemPrice;
 
-    public static double setCasePrice() {
+    public static double setItemPrice() {
         JSONParser parser = new JSONParser();
         try {
             url = new URL(API_STRING);
@@ -22,18 +22,18 @@ public class PriceParser {
             json = s.nextLine();
             s.close();
             JSONObject obj = (JSONObject) parser.parse(json);
-            casePrice = Double.parseDouble(((String) obj.get("lowest_price")).replace("zł", "").replace(",", "."));
+            itemPrice = Double.parseDouble(((String) obj.get("lowest_price")).replace("zł", "").replace(",", "."));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return casePrice;
+        return itemPrice;
     }
 
     public static double getWholePrice() {
-        double x = casePrice;
-        double y = Double.parseDouble(Config.getAmountOfCases());
+        double x = itemPrice;
+        double y = Double.parseDouble(Config.getAmountOfItem());
         DecimalFormat df = new DecimalFormat("###.##");
         return Double.parseDouble(df.format(x * y).replace(",", "."));
     }

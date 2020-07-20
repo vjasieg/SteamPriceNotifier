@@ -13,7 +13,7 @@ public class Main {
             @Override
             public void run () {
                 try {
-                    PriceParser.setCasePrice();
+                    PriceParser.setItemPrice();
                     NotificationHandler.displayNotification();
                     NotificationHandler.displayConsole();
                 } catch (AWTException e) {

@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 public class Config {
 
-    public static String amountOfCases;
+    public static String amountOfItem;
     public static Long interval;
     public static String notificationPrice;
     public static String json;
     public static String itemurl;
     public static double price;
 
-    public static String getAmountOfCases() {
-        return amountOfCases;
+    public static String getAmountOfItem() {
+        return amountOfItem;
     }
 
     public static Long getInterval() {
@@ -39,7 +39,7 @@ public class Config {
             json = s.nextLine();
             s.close();
             JSONObject obj = (JSONObject) parser.parse(json);
-            amountOfCases = (String) obj.get("amountofcases");
+            amountOfItem = (String) obj.get("amountofitem");
             interval = (Long) obj.get("interval");
             notificationPrice = (String) obj.get("notificationprice");
             itemurl = (String) obj.get("itemurl");
